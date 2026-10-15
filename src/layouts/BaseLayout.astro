@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+const { title = 'Molinda Mihiranga — Software Engineer', description = 'Selected work by Molinda Mihiranga. Software engineering across web, mobile, AI, and connected systems.' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#161616" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script is:inline>
+      (() => {
+        let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        try { const saved = localStorage.getItem('portfolio-theme'); if (saved === 'dark' || saved === 'light') theme = saved; } catch {}
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <title>{title}</title>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <aside class="site-rail">
+      <a class="wordmark" href={base} aria-label="Molinda Mihiranga, home">M<span class="wordmark-slash">/</span>M<span class="wordmark-dot">.</span></a>
+      <p class="rail-intro">MOLINDA MIHIRANGA<br /><span>SOFTWARE ENGINEER</span></p>
+      <nav class="rail-nav" aria-label="Main navigation"><a href={`${base}#intro`} data-section="intro"><span>01</span>INTRO <b>↗</b></a><a href={`${base}#work`} data-section="work"><span>02</span>WORK <b>↗</b></a><a href={`${base}#about`} data-section="about"><span>03</span>PROFILE <b>↗</b></a><a href={`${base}#contact`} data-section="contact"><span>04</span>CONTACT <b>↗</b></a></nav>
+      <div class="rail-bottom"><div class="rail-location"><i></i> SRI LANKA<br /><span>THINKING BEYOND BORDERS.</span></div><button class="theme-toggle" type="button" aria-label="Switch color theme"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">CHANGE THE LIGHT</span><span aria-hidden="true">↔</span></button><a class="rail-email" href="mailto:molindamihiranga17@gmail.com">LET’S TALK <span>↗</span></a></div>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+      <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" hidden><a href={`${base}#intro`}>01 / INTRO</a><a href={`${base}#work`}>02 / WORK</a><a href={`${base}#about`}>03 / PROFILE</a><a href={`${base}#contact`}>04 / CONTACT</a></nav>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </aside>
+    <div class="page-body"><main id="main"><slot /></main><footer class="site-footer"><span>© {new Date().getFullYear()} MOLINDA MIHIRANGA</span><a href="#top">BACK TO TOP ↑</a></footer></div>
+    <script src="../scripts/interactions.ts"></script>
+  </body>
+</html>
