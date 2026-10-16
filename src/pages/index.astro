@@ -1,22 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectVisual from '../components/ProjectVisual.astro';
+import Icon from '../components/Icon.astro';
 import { projects } from '../data/projects';
 const base = import.meta.env.BASE_URL;
+const steps = [
+  { name: 'Understand', icon: 'search', text: 'Start with the problem. Ask better questions.' },
+  { name: 'Shape', icon: 'pen', text: 'Make the complex feel clear and intuitive.' },
+  { name: 'Build', icon: 'code', text: 'Connect thoughtful interfaces to solid systems.' },
+  { name: 'Refine', icon: 'launch', text: 'Test the details. Keep making it better.' },
+];
 ---
 <BaseLayout>
-  <section class="cover" id="intro" aria-labelledby="hero-title">
-    <picture class="cover-portrait">
-      <source srcset={`${base}images/molinda-desktop.webp`} media="(min-width: 761px)" type="image/webp" />
-      <img src={`${base}images/molinda.png`} alt="Portrait of Molinda Mihiranga" width="640" height="667" fetchpriority="high" decoding="async" />
-    </picture>
-    <div class="cover-shade" aria-hidden="true"></div>
-    <div class="cover-top"><span>INDEPENDENT MIND.<br />CONNECTED THINKING.</span><span>WEB / MOBILE / SYSTEMS</span></div>
-    <span class="cover-edge" aria-hidden="true">A PERSONAL COLLECTION OF WORK — 01 / 05</span>
-    <div class="cover-bottom"><p class="cover-role"><span></span> SOFTWARE ENGINEER & BUILDER</p><h1 id="hero-title">MOLINDA<br /><span>MIHIRANGA.</span></h1><div class="cover-description"><p>From the first idea to the final interaction.<br />I build software that makes things happen.</p><a href="#work" class="cover-scroll" aria-label="Explore selected work"><span>EXPLORE<br />MY WORK</span><b>↓</b></a></div></div>
+  <section class="hero" id="intro" aria-labelledby="hero-title">
+    <div class="hero-topline"><span>INDEPENDENT THINKING. CONNECTED SYSTEMS.</span><span class="status-label"><i></i> OPEN TO OPPORTUNITIES</span></div>
+    <div class="hero-masthead" aria-hidden="true">PORTFOLIO</div>
+    <div class="portrait-stage"><img class="hero-cutout" src={`${base}images/molinda-cutout.png`} alt="Molinda Mihiranga" width="1122" height="1402" fetchpriority="high" decoding="async" /></div>
+    <div class="hero-intro">
+      <span class="hero-greeting">Hello, I’m</span>
+      <h1 id="hero-title">MOLINDA<br />MIHIRANGA<span>.</span></h1>
+      <p class="hero-role">SOFTWARE ENGINEER<br />&amp; CURIOUS BUILDER.</p>
+      <p class="hero-description">Thoughtful on the surface.<br />Solid underneath. I build software<br class="desktop-break" /> that brings the two together.</p>
+      <a class="hero-work-link" href="#work"><span>EXPLORE MY WORK</span><span class="circle-arrow"><Icon name="down" size={19} /></span></a>
+    </div>
+    <div class="hero-side">
+      <div class="hero-note"><span class="orbit-star"><Icon name="spark" size={27} /></span><p>From a first idea<br />to something<br /><em>that works.</em></p></div>
+      <dl class="hero-stats"><div><dt>05</dt><dd>SELECTED<br />PROJECTS</dd></div><div><dt>06</dt><dd>MONTHS AT<br />RAXWO</dd></div><div><dt>IT</dt><dd>UNDERGRADUATE<br />AT SLIIT</dd></div></dl>
+    </div>
+    <div class="hero-bottomline"><span><Icon name="globe" size={14} /> BASED IN SRI LANKA · BUILDING BEYOND BORDERS</span><span>SCROLL TO DISCOVER <Icon name="down" size={13} /></span></div>
   </section>
-  <div class="intro-strip reveal"><span>BASED IN SRI LANKA</span><span class="strip-line"></span><span>BUILT FOR THE REAL WORLD</span><span class="strip-symbol" aria-hidden="true">✳</span></div>
-  <section class="work-section section-shell" id="work" aria-labelledby="work-title"><div class="chapter-heading reveal"><p class="eyebrow">02 / SELECTED WORK</p><h2 id="work-title">THINGS I’VE<br /><span>PUT INTO MOTION.</span></h2><p>Recruitment. Agriculture. Finance.<br />Different challenges. End-to-end thinking.</p></div><div class="work-index">{projects.map((project,index) => <details class="work-entry reveal" name="selected-project" open={index===0}><summary><span class="entry-number">{project.number}</span><h3>{project.title}</h3><span class="entry-category">{project.category}</span><span class="entry-indicator" aria-hidden="true">+</span></summary><div class="entry-panel"><div class="entry-image"><ProjectVisual project={project} /></div><div class="entry-content"><p class="eyebrow">{project.eyebrow}</p><p class="entry-description">{project.summary}</p><div class="tag-row">{project.tags.slice(0,5).map(tag=><span>{tag}</span>)}</div><a class="project-link" href={`${base}projects/${project.slug}/`}>EXPLORE PROJECT <span>↗</span></a></div></div></details>)}</div></section>
-  <section class="profile-section section-shell" id="about" aria-labelledby="about-title"><div class="profile-label"><p class="eyebrow">03 / A BIT OF CONTEXT</p><span class="profile-symbol" aria-hidden="true">↳</span></div><div class="profile-main"><h2 id="about-title" class="reveal">I LIKE THE POINT<br />WHERE <span>“WHAT IF”</span><br />BECOMES <span>“IT WORKS.”</span></h2><div class="profile-copy reveal"><p>I’m Molinda, a software engineer and Information Technology undergraduate at SLIIT. I work across interfaces, APIs, mobile apps, and the systems underneath.</p><p>My internship at Raxwo took me into the details of building multi-tenant platforms for gyms and learning institutes. My other projects connect AI with recruitment, IoT with agriculture, and everyday spending with better insights.</p></div><div class="resume-action reveal"><a class="button button-primary" href={`${base}resume/Molinda-Mihiranga-CV.pdf`} download>DOWNLOAD CV <span aria-hidden="true">&darr;</span></a><span>PDF &middot; Experience, projects &amp; skills</span></div><div class="cv-experience reveal"><p class="eyebrow">EXPERIENCE / APRIL 13 &mdash; OCTOBER 13, 2026</p><h3>Software Engineering Intern</h3><p class="cv-employer">Raxwo Pvt Ltd &middot; Remote, Sri Lanka</p><p>Built multi-tenant software for gym operations and tuition institutes, working across user interfaces, backend services, access control, payments, reporting, and real-time updates.</p><div class="cv-role-projects"><a href={`${base}projects/gymora/`}><strong>Gymora &nearr;</strong><span>Memberships, coaching, POS, inventory, PayHere payments, and automated notifications.</span></a><a href={`${base}projects/raxwolms/`}><strong>RaxwoLMS &nearr;</strong><span>Academic workflows, institute finance, tenant isolation, secure storage, and reporting.</span></a></div></div><div class="cv-education reveal"><p class="eyebrow">EDUCATION</p><div class="experience-grid"><article><span class="eyebrow">2022 &mdash; PRESENT</span><h3>Bachelor of Science in Information Technology</h3><p>Sri Lanka Institute of Information Technology (SLIIT)</p><p>Specialized in IT &middot; Malabe, Sri Lanka</p></article><article><span class="eyebrow">2013 &mdash; 2021</span><h3>Science Stream (Mathematics)</h3><p>Badulla Central College</p><p>Badulla, Sri Lanka</p></article></div></div><div class="toolkit reveal"><p class="eyebrow">TECHNICAL SKILLS</p><div><span>Languages</span><p>Java / C / C++ / JavaScript / TypeScript / Go / Python / PHP / Kotlin / SQL</p></div><div><span>Web &amp; mobile</span><p>React.js / React Native / Next.js / Express.js / Node.js / ASP.NET Core / Spring Boot / FastAPI</p></div><div><span>Databases &amp; messaging</span><p>PostgreSQL / MongoDB / MySQL / Redis / Apache Kafka</p></div><div><span>Cloud &amp; infrastructure</span><p>Docker / Kong / Cloudflare R2 / AWS / GitHub Actions</p></div><div><span>Developer tools</span><p>Git / R Studio / PowerBI / Trello / Jira / Playwright</p></div></div></div></section>
-  <section class="contact-block section-shell" id="contact" aria-labelledby="contact-title"><div class="contact-top"><p class="eyebrow">04 / MAKE THE CONNECTION</p><span aria-hidden="true">↗</span></div><h2 id="contact-title" class="reveal">GOOD WORK<br />STARTS WITH<br /><span>A CONVERSATION.</span></h2><div class="contact-actions reveal"><a href="mailto:molindamihiranga17@gmail.com">molindamihiranga17@gmail.com ↗</a><button class="copy-email" type="button" data-email="molindamihiranga17@gmail.com">COPY EMAIL ⧉</button><span class="copy-status" role="status"></span></div><div class="contact-links reveal"><p>Have a project, an opportunity, or a question?<br />I’d like to hear it.</p><div><a href="https://github.com/MolindaMihiranga17" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/molinda-mihiranga-627789317" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a></div></div></section>
+
+  <div class="discipline-strip" aria-label="Areas of work"><span>FULL-STACK DEVELOPMENT</span><Icon name="spark" size={16} /><span>MOBILE EXPERIENCES</span><Icon name="spark" size={16} /><span>AI &amp; CONNECTED SYSTEMS</span><Icon name="spark" size={16} /><span>IDEAS INTO REALITY</span></div>
+
+  <section class="selected-work section-shell" id="work" aria-labelledby="work-title">
+    <div class="section-heading reveal"><div><p class="eyebrow"><span>01 /</span> THE WORK</p><h2 id="work-title">SELECTED <em>WORK.</em></h2></div><p>Different problems. One approach.<br />Build something useful, and build it well.</p><span class="section-count">( 01—05 )</span></div>
+    <div class="showcase-grid">{projects.map((project, index) => {
+      const phone = project.visual === 'hydro' || project.visual === 'spendwise';
+      const shots = (project.screenshots ?? []).slice(0, phone ? 2 : 1);
+      return <article class:list={['showcase-card', 'reveal', { 'showcase-featured': index === 0, 'showcase-secondary': index === 1 }]}>
+        <a href={`${base}projects/${project.slug}/`} class="showcase-link" aria-label={`Explore ${project.title}: ${project.eyebrow}`}>
+          <div class={`showcase-visual showcase-${project.visual}`}>
+            <div class="showcase-top"><span>{project.eyebrow}</span><span class="visual-link-icon"><Icon name="arrow" size={19} /></span></div>
+            <span class="showcase-word" aria-hidden="true">{project.title}</span>
+            <div class:list={['project-art', { 'phone-art': phone, 'desktop-art': !phone }]}>{shots.map(shot => <div class={phone ? 'phone-frame' : 'browser-frame'}>{!phone && <div class="browser-chrome" aria-hidden="true"><i></i><i></i><i></i><span>{project.title.toLowerCase()} / workspace</span></div>}<img src={`${base}${shot.src}`} alt={shot.alt} loading="lazy" decoding="async" /></div>)}</div>
+            <span class="visual-footnote">{phone ? 'MOBILE EXPERIENCE' : 'WEB PLATFORM'} <span>↗</span></span>
+          </div>
+          <div class="showcase-caption"><span class="project-number">{project.number}</span><div><h3>{project.title}</h3><p>{project.category}</p></div><Icon name="right" size={26} /></div>
+        </a>
+      </article>;
+    })}</div>
+    <div class="work-endnote"><span>REAL PROJECTS. REAL SCREENS. END-TO-END THINKING.</span><a href="https://github.com/MolindaMihiranga17" target="_blank" rel="noopener noreferrer">MORE ON GITHUB <Icon name="arrow" size={15} /></a></div>
+  </section>
+
+  <section class="about section-shell" id="about" aria-labelledby="about-title">
+    <div class="about-intro reveal"><div><p class="eyebrow"><span>02 /</span> BEHIND THE WORK</p><h2 id="about-title">A CURIOUS MIND.<br /><em>A PRACTICAL BUILDER.</em></h2></div><div class="about-copy"><p>I’m Molinda, a software engineer and IT undergraduate at SLIIT. I enjoy the space where a good idea meets the details that make it work.</p><p>From multi-tenant platforms at Raxwo to AI recruitment and connected agriculture, I work across the interface, the API, and everything underneath.</p><a class="inline-link" href={`${base}resume/Molinda-Mihiranga-CV.pdf`} download>DOWNLOAD MY CV <Icon name="download" size={17} /></a></div></div>
+    <div class="about-grid">
+      <div class="credentials reveal"><h3>THE FOUNDATION<span>01</span></h3><div class="credential"><p class="eyebrow">EXPERIENCE <span>APR — OCT 2026</span></p><h4>Software Engineering Intern</h4><p>Raxwo Pvt Ltd · Remote, Sri Lanka</p><div class="experience-links"><a href={`${base}projects/gymora/`}>Gymora <Icon name="arrow" size={12} /></a><a href={`${base}projects/raxwolms/`}>RaxwoLMS <Icon name="arrow" size={12} /></a></div></div><div class="credential"><p class="eyebrow">EDUCATION <span>2022 — PRESENT</span></p><h4>BSc in Information Technology</h4><p>Sri Lanka Institute of Information Technology</p></div><div class="skills-block"><p class="eyebrow">TOOLS OF THE TRADE</p><div class="skill-tags">{['React', 'Next.js', 'TypeScript', 'React Native', 'Go', 'Python', 'ASP.NET Core', 'PostgreSQL', 'Docker', 'AWS'].map(skill => <span>{skill}</span>)}</div></div></div>
+      <div class="process reveal"><h3>THE PROCESS<span>02</span></h3><ol>{steps.map((step, index) => <li><span class="process-number">0{index + 1}</span><span class="process-icon"><Icon name={step.icon} size={21} /></span><div><h4>{step.name}</h4><p>{step.text}</p></div></li>)}</ol></div>
+      <aside class="manifesto reveal"><Icon name="spark" size={57} /><p>FROM<br /><span>“WHAT IF”</span><br />TO<br /><span>“IT WORKS.”</span></p><div><span class="signature">Molinda</span><span class="manifesto-note">THAT’S THE PART<br />I LOVE.</span></div></aside>
+    </div>
+  </section>
+
+  <section class="contact section-shell" id="contact" aria-labelledby="contact-title">
+    <div class="contact-topline"><p class="eyebrow"><span>03 /</span> THE NEXT CHAPTER</p><span class="status-label"><i></i> OPEN TO A CONVERSATION</span></div>
+    <div class="contact-main"><div class="contact-title-wrap reveal"><h2 id="contact-title">LET’S MAKE<br /><em>IT HAPPEN.</em></h2><Icon name="spark" size={64} class="contact-star" /></div><div class="contact-info reveal"><p>A project, an opportunity, or a good idea.<br />It all starts with a conversation.</p><a class="email-link" href="mailto:molindamihiranga17@gmail.com"><span>molindamihiranga17<br />@gmail.com</span><Icon name="arrow" size={31} /></a><div class="contact-actions"><button class="copy-email" type="button" data-email="molindamihiranga17@gmail.com"><Icon name="copy" size={15} /><span>COPY EMAIL</span></button><span class="copy-status" role="status" aria-live="polite"></span></div><div class="social-links"><a href="https://github.com/MolindaMihiranga17" target="_blank" rel="noopener noreferrer">GITHUB <Icon name="arrow" size={14} /></a><a href="https://www.linkedin.com/in/molinda-mihiranga-627789317" target="_blank" rel="noopener noreferrer">LINKEDIN <Icon name="arrow" size={14} /></a><a href={`${base}resume/Molinda-Mihiranga-CV.pdf`} download>RESUMÉ <Icon name="download" size={14} /></a></div></div></div>
+    <div class="contact-bottomline"><span>BASED IN SRI LANKA. ALWAYS CURIOUS.</span><span>GOOD THINGS START SOMEWHERE. <Icon name="right" size={19} /></span></div>
+  </section>
 </BaseLayout>

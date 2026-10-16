@@ -1,0 +1,45 @@
+/* Motion adds depth without shifting text or taking over scrolling. */
+.page-progress{position:fixed;inset:0 0 auto;height:3px;z-index:100;background:var(--accent-text);transform:scaleX(var(--scroll-progress,0));transform-origin:left;pointer-events:none}
+.hero-intro>*,.hero-stats>div{animation:content-in .95s var(--ease) both}
+.hero-intro>:nth-child(1){animation-delay:.2s}
+.hero-intro>:nth-child(2){animation-delay:.32s}
+.hero-intro>:nth-child(3){animation-delay:.46s}
+.hero-intro>:nth-child(4){animation-delay:.58s}
+.hero-intro>:nth-child(5){animation-delay:.7s}
+.hero-stats>div:nth-child(1){animation-delay:.5s}
+.hero-stats>div:nth-child(2){animation-delay:.65s}
+.hero-stats>div:nth-child(3){animation-delay:.8s}
+.orbit-star>svg,.discipline-strip>svg,.manifesto>svg{animation:star-orbit 24s linear infinite}
+.contact-star{animation:contact-orbit 30s linear infinite}
+.status-label i{animation:status-pulse 3s ease-in-out infinite}
+.hero-work-link .circle-arrow>svg{animation:arrow-drift 2.6s ease-in-out infinite}
+.hero-topline,.hero-bottomline{animation:content-in 1s .6s var(--ease) both}
+.showcase-card.will-reveal{transition-delay:var(--reveal-delay,0ms)}
+.showcase-visual{transform:perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));transition:transform .55s var(--ease),border-color .3s;transform-origin:center}
+.showcase-visual::after{content:'';position:absolute;inset:0;z-index:4;pointer-events:none;background:radial-gradient(ellipse at var(--shine-x,50%) var(--shine-y,50%),#ffffff15,transparent 65%);opacity:0;transition:opacity .4s}
+.showcase-link:hover .showcase-visual::after{opacity:1}
+.showcase-link:focus-visible .showcase-visual{border-color:var(--accent-text)}
+.is-visible .process li{animation:step-in .7s var(--ease) both}
+.is-visible .process li:nth-child(2){animation-delay:.13s}
+.is-visible .process li:nth-child(3){animation-delay:.26s}
+.is-visible .process li:nth-child(4){animation-delay:.39s}
+.is-visible .skill-tags>span{animation:skill-in .55s var(--ease) both}
+.is-visible .skill-tags>span:nth-child(2n){animation-delay:.12s}
+.is-visible .skill-tags>span:nth-child(3n){animation-delay:.22s}
+.inline-link svg,.social-links svg,.email-link svg,.copy-email svg{transition:translate .35s var(--ease),rotate .35s var(--ease)}
+.inline-link:hover svg{translate:0 3px}
+.social-links a:hover svg,.email-link:hover svg{translate:3px -3px}
+.copy-email:hover svg{rotate:-8deg}
+.brand-mark>span{display:inline-block;transition:translate .4s var(--ease)}
+.brand:hover .brand-mark>span{translate:3px -3px}
+@keyframes star-orbit{to{rotate:360deg}}
+@keyframes contact-orbit{to{rotate:360deg}}
+@keyframes status-pulse{50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 3%,transparent)}}
+@keyframes arrow-drift{0%,70%,100%{translate:0 0}35%{translate:0 4px}}
+@keyframes step-in{from{opacity:0;translate:-14px 0}to{opacity:1;translate:0 0}}
+@keyframes skill-in{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:reduce){
+  .portrait-stage{translate:none}
+  .showcase-visual{transform:none}
+  .showcase-card.will-reveal{transition-delay:0ms}
+}

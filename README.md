@@ -2,7 +2,7 @@
 
 An animated, static portfolio built with Astro. Project content and screenshot captions live in `src/data/projects.ts`. The screenshot files live in `public/projects/`.
 
-The portrait-led design uses `src/styles/global.css` and `src/scripts/interactions.ts` for light/dark themes, saved theme preferences, an expandable project index, mobile navigation, and scroll reveals. The portrait lives in `public/images/molinda.png`. The initial theme follows the device preference. Animations respect reduced-motion settings.
+The editorial homepage uses `src/styles/reference.css` for four palettes: Crimson (the default black and red), Violet (purple and black), Paper (warm ivory), and Midnight (navy and ice blue). The appearance menu saves the selection in the browser and applies it across project pages. The transparent portrait lives in `public/images/molinda-cutout.png`. Fonts and their licenses are hosted locally in `public/fonts/`. Small labels are at least 12px, with larger body copy. Portrait parallax, project tilt, staggered reveals, and animated accents live in `src/styles/motion.css` and respect reduced-motion settings.
 
 ## Run locally
 
