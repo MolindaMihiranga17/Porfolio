@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Molinda Mihiranga — Public CV</title>
+  <style>
+    @page{size:A4;margin:15mm 17mm}
+    *{box-sizing:border-box}body{margin:0;color:#242422;background:white;font:10pt/1.42 Arial,sans-serif}
+    h1,h2,h3,p{margin:0}h1{font-size:28pt;letter-spacing:-1px;line-height:1.1}h2{font-size:10pt;text-transform:uppercase;letter-spacing:1.5px;color:#a52b22;border-bottom:1px solid #ccc7bc;padding-bottom:5px;margin:20px 0 10px}h3{font-size:12pt}a{color:inherit;text-decoration:none}
+    .role{font-size:12pt;margin-top:6px;color:#a52b22}.contact{font-size:9pt;line-height:1.7;margin-top:10px}.meta{font-size:9pt;color:#555;margin:4px 0 8px}.summary{margin-top:14px}.job{display:flex;justify-content:space-between;gap:20px}.job span{font-size:9pt;white-space:nowrap}.project{margin-top:14px;break-inside:avoid}.stack{font-size:8.5pt;color:#555;margin:4px 0 6px}ul{padding-left:17px;margin:6px 0 0}li{padding-left:3px;margin-bottom:5px}.education{margin-top:12px}.education h3{font-size:10.5pt}.page+.page{break-before:page}.running{font-size:9pt;color:#555;border-bottom:1px solid #ccc7bc;padding-bottom:9px;display:flex;justify-content:space-between}.skills{display:grid;grid-template-columns:112px 1fr;gap:7px 14px;font-size:9pt}.skills dt{font-weight:bold}.skills dd{margin:0}.project-links{font-size:9pt;margin-top:5px;color:#a52b22}
+    @media screen{body{background:#e8e4dc}.page{max-width:210mm;min-height:297mm;margin:24px auto;padding:15mm 17mm;background:#fff;box-shadow:0 4px 20px #0001}}
+  </style>
+</head>
+<body>
+  <section class="page">
+    <header>
+      <h1>Molinda Mihiranga</h1>
+      <p class="role">Software Engineer</p>
+      <p class="contact">Sri Lanka · <a href="mailto:molindamihiranga17@gmail.com">molindamihiranga17@gmail.com</a><br>
+        <a href="https://github.com/MolindaMihiranga17">github.com/MolindaMihiranga17</a> · <a href="https://www.linkedin.com/in/molinda-mihiranga-627789317">LinkedIn: Molinda Mihiranga</a></p>
+      <p class="summary">Software engineer and Information Technology undergraduate at SLIIT, with experience building web and mobile applications, multi-tenant platforms, and distributed backend systems. Projects span recruitment, connected agriculture, finance, and institute management.</p>
+    </header>
+    <h2>Experience</h2>
+    <div class="job"><h3>Software Engineering Intern</h3><span>13 Apr – 13 Oct 2026</span></div>
+    <p class="meta">Raxwo Pvt Ltd · Remote, Sri Lanka</p>
+    <article class="project">
+      <h3>Gymora — Gym Management Platform</h3>
+      <p class="stack">React · Vite · Node.js · Express.js · MongoDB · Socket.IO · JWT · PayHere</p>
+      <ul>
+        <li>Designed and built a multi-tenant SaaS platform with dedicated dashboards and access control for Super Admin, Gym Owner, Coach, and Member roles.</li>
+        <li>Developed memberships, attendance, workout and meal plans, POS, inventory, returns, printable bills, and low-stock monitoring.</li>
+        <li>Integrated PayHere payments, SMS and email notifications, Google Gemini API features, real-time updates, audit logs, and PDF/Excel reporting.</li>
+      </ul>
+    </article>
+    <article class="project">
+      <h3>RaxwoLMS — Learning &amp; Institute Management</h3>
+      <p class="stack">Next.js · React · TypeScript · MongoDB · Tailwind CSS · AWS S3 · JWT · Zod</p>
+      <ul>
+        <li>Architected a multi-tenant platform with server-side tenant isolation and role-based access for platform admins, institute admins, staff/teachers, and students.</li>
+        <li>Developed courses, lessons, quizzes, assignments, grading, examinations, attendance, scheduling, and student progress tracking.</li>
+        <li>Built institute finance and subscription workflows, secure file storage with AWS S3 presigned URLs, PDF/Excel reports, audit logs, and reusable UI components.</li>
+      </ul>
+    </article>
+    <h2>Education</h2>
+    <div class="education"><h3>Bachelor of Science in Information Technology · Specialized in IT</h3><p>Sri Lanka Institute of Information Technology (SLIIT)</p><p class="meta">2022 – Present · Malabe, Sri Lanka</p></div>
+    <div class="education"><h3>Science Stream (Mathematics)</h3><p>Badulla Central College</p><p class="meta">2013 – 2021 · Badulla, Sri Lanka</p></div>
+  </section>
+  <section class="page">
+    <div class="running"><span>Molinda Mihiranga</span><span>Projects &amp; Skills</span></div>
+    <h2>Selected Projects</h2>
+    <article class="project">
+      <h3>Vettly — AI Recruitment Platform</h3>
+      <p class="stack">ASP.NET Core · Go · FastAPI · React · TypeScript · PostgreSQL · Redis · Docker</p>
+      <ul>
+        <li>Architected a polyglot microservices platform with seven ASP.NET Core services, two Python/FastAPI services, and two Go services behind a Go API gateway.</li>
+        <li>Built a recruiter dashboard, Kanban pipeline, semantic candidate ranking, resume screening, SignalR messaging, and an e-signature offer workflow with a hashed audit trail.</li>
+        <li>Deployed the frontend to Cloudflare Pages and 11 containerized backend services to Render, with GitHub Actions deploying changed services.</li>
+      </ul>
+      <p class="project-links"><a href="https://github.com/Vettly/vettly-platform">GitHub repository</a> · <a href="https://vettly-platform.pages.dev">Live application</a></p>
+    </article>
+    <article class="project">
+      <h3>HydroGuardian — Smart Hydroponic System</h3>
+      <p class="stack">React Native · Expo · FastAPI · TensorFlow · ESP32 · WebSockets</p>
+      <ul>
+        <li>Built an automated hydroponic fodder system with ESP32 sensor monitoring and actuator control, supported by an Expo mobile app with more than 15 screens.</li>
+        <li>Developed a FastAPI backend with JWT authentication and a WebSocket gateway for device discovery and live monitoring, plus CNN/LSTM plant disease detection and energy optimization.</li>
+      </ul>
+      <p class="project-links"><a href="https://github.com/25-26J-285/hydro-grow-main">GitHub repository</a></p>
+    </article>
+    <article class="project">
+      <h3>SpendWise — Personal Finance &amp; Vehicle Tracker</h3>
+      <p class="stack">React Native · Expo · Go · Spring Boot · FastAPI · Kafka · PostgreSQL · Redis</p>
+      <ul>
+        <li>Designed microservices for authentication, finance, vehicles, notifications, and AI, connected through Apache Kafka behind a Kong gateway.</li>
+        <li>Built vehicle fuel and maintenance tracking, streamed AI spending insights, reminders, and push notifications in an offline-first mobile app using Expo SQLite.</li>
+      </ul>
+      <p class="project-links"><a href="https://github.com/VoidLabs-org/SpendWise---Frontend">GitHub repository</a></p>
+    </article>
+    <h2>Technical Skills</h2>
+    <dl class="skills">
+      <dt>Languages</dt><dd>Java, C, C++, JavaScript, TypeScript, Go, Python, PHP, Kotlin, SQL</dd>
+      <dt>Web &amp; mobile</dt><dd>React, React Native, Next.js, Express.js, Node.js, ASP.NET Core, Spring Boot, FastAPI</dd>
+      <dt>Data &amp; messaging</dt><dd>PostgreSQL, MongoDB, MySQL, Redis, Apache Kafka</dd>
+      <dt>Cloud &amp; infrastructure</dt><dd>Docker, Kong, Cloudflare R2, AWS, GitHub Actions</dd>
+      <dt>Developer tools</dt><dd>Git, R Studio, PowerBI, Trello, Jira, Playwright</dd>
+    </dl>
+  </section>
+</body>
+</html>

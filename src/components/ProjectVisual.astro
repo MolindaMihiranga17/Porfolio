@@ -3,7 +3,8 @@ import type { Project } from '../data/projects';
 const { project } = Astro.props as { project: Project };
 const base = import.meta.env.BASE_URL;
 const shots = project.screenshots ?? [];
+const mobile = project.visual === 'hydro' || project.visual === 'spendwise';
 ---
 <div class:list={['project-visual',`visual-${project.visual}`,{'visual-mobile':project.visual==='hydro'||project.visual==='spendwise'}]} aria-hidden="true">
-  {shots.length > 0 ? <div class="screen-composition">{(project.visual==='vettly'?shots.slice(0,1):shots.slice(0,2)).map(shot=><img src={`${base}${shot.src}`} alt="" loading="lazy" />)}</div> : <div class="project-typogram"><span>{project.category}</span><strong>{project.title}</strong><div class="type-lines"><i></i><i></i><i></i><i></i></div><span>{project.eyebrow} ↗</span></div>}
+  {shots.length > 0 ? <div class="screen-composition">{shots.slice(0, mobile ? 2 : 1).map(shot=><img src={`${base}${shot.src}`} alt="" loading="lazy" decoding="async" />)}</div> : <div class="project-typogram"><span>{project.category}</span><strong>{project.title}</strong><div class="type-lines"><i></i><i></i><i></i><i></i></div><span>{project.eyebrow} ↗</span></div>}
 </div>

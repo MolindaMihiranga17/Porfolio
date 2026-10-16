@@ -95,6 +95,10 @@ export const projects: Project[] = [
       "Built notifications and audit logs for expiring memberships, payment issues, low stock, trials, and owner/coach activity, with real-time updates through Socket.IO.",
       "Created client-side PDF and Excel reports for finance, attendance, members, and inventory using jsPDF, jspdf-autotable, and XLSX."
 ],
+    screenshots: [
+      { src: 'projects/gymora/owner-dashboard.webp', alt: 'Gymora gym owner dashboard with revenue, operations, and member status panels', caption: 'Gym owner dashboard', kind: 'desktop' },
+      { src: 'projects/gymora/super-admin-dashboard.webp', alt: 'Gymora super admin dashboard showing platform health, revenue trends, and plan mix', caption: 'Platform administration dashboard', kind: 'desktop' },
+    ],
   },
   {
     slug: 'raxwolms', number: '05', title: 'RaxwoLMS', eyebrow: 'Learning, organized',
@@ -109,5 +113,10 @@ export const projects: Project[] = [
       "Integrated AWS S3 presigned URLs for secure file storage, PDF and Excel reporting, audit logs, announcements, privacy request handling, and administrative tools.",
       "Used Server Actions with dedicated data-access and mutation layers, custom JWT authentication, Zod validation, and reusable UI components for maintainable, type-safe development."
 ],
+    screenshots: [
+      { src: 'projects/raxwolms/landing-page.webp', alt: 'LearningMS landing page introducing the institute workspace', caption: 'Institute workspace landing page', kind: 'desktop' },
+      { src: 'projects/raxwolms/institute-admin-dashboard.webp', alt: 'RaxwoLMS institute admin dashboard with academic, finance, and activity summaries', caption: 'Institute admin dashboard', kind: 'desktop' },
+      { src: 'projects/raxwolms/student-dashboard.webp', alt: 'RaxwoLMS student dashboard with courses, classes, exams, and deadlines', caption: 'Student dashboard', kind: 'desktop' },
+    ],
   },
 ];

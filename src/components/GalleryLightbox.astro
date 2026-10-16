@@ -1,0 +1,24 @@
+---
+const { title } = Astro.props;
+---
+<dialog class="lightbox" aria-labelledby="lightbox-title">
+  <div class="lightbox-panel">
+    <header class="lightbox-header">
+      <h2 id="lightbox-title">{title} / Gallery</h2>
+      <div class="lightbox-tools">
+        <button type="button" class="lightbox-zoom" aria-pressed="false">Zoom in</button>
+        <button type="button" class="lightbox-close" aria-label="Close gallery" autofocus>✕</button>
+      </div>
+    </header>
+    <div class="lightbox-stage">
+      <img class="lightbox-image" alt="" />
+      <p class="lightbox-status" role="status"></p>
+    </div>
+    <footer class="lightbox-footer">
+      <button type="button" class="lightbox-prev" aria-label="Previous screenshot">←</button>
+      <p class="lightbox-caption" aria-live="polite" aria-atomic="true"></p>
+      <button type="button" class="lightbox-next" aria-label="Next screenshot">→</button>
+      <a class="lightbox-original" target="_blank" rel="noopener noreferrer">Open original ↗</a>
+    </footer>
+  </div>
+</dialog>

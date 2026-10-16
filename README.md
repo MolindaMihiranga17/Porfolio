@@ -27,4 +27,12 @@ Push this repository to GitHub and import it in Vercel. Vercel detects Astro aut
 
 The included GitHub Actions workflow deploys on pushes to `main`. In repository Settings → Pages, choose **GitHub Actions** as the source. For a root site, name the repository `MolindaMihiranga17.github.io`. If using a different repository name, add a repository variable named `SITE_BASE` with the value `/<repository-name>/` before deployment.
 
-The source CV is intentionally not in the public site. It contains a home address and third-party contact details. Add a public resume only after preparing a redacted version.
+## Public CV
+
+The Download CV buttons serve `public/resume/Molinda-Mihiranga-CV.pdf`, an unchanged copy of `C:/Users/user/Desktop/Molinda_Mihiranga_CV.pdf`, as requested by the owner.
+
+To update the download, replace that public PDF with the latest original CV. The earlier shortened version in `documents/public-resume.html` is retained as an optional alternative and is not used for the download.
+
+## Screenshot gallery
+
+Project galleries use a native dialog lightbox with previous/next buttons, arrow keys, Home/End, Escape, touch swipes, and focus restoration. Without JavaScript, screenshot links open the original images. Add screenshots and captions in `src/data/projects.ts` to include them automatically.

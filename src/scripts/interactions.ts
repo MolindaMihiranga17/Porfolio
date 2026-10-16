@@ -24,9 +24,25 @@ menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('ar
 menu?.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
 document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu();});
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+document.querySelectorAll('.gallery-item, .gallery-heading, .detail-heading, .detail-meta, .detail-visual-wrap, .profile-label, .next-project').forEach(el=>el.classList.add('reveal'));
+document.querySelectorAll<HTMLElement>('.toolkit > div, .experience-grid > article, .cv-role-projects > a').forEach(el=>{
+  el.classList.add('stagger-item');
+  const index=[...el.parentElement!.children].indexOf(el);
+  el.style.setProperty('--stagger',`${Math.min(index,5)*70}ms`);
+});
 if(!reduced.matches&&'IntersectionObserver' in window){
-  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.08});
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.08,rootMargin:'0px 0px -24px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>{el.classList.add('will-reveal');observer.observe(el);});
+  // Keyboard navigation should never land on content waiting for a scroll reveal.
+  document.addEventListener('focusin',event=>{
+    if(event.target instanceof Element)event.target.closest('.will-reveal')?.classList.add('is-visible');
+  });
+  reduced.addEventListener('change',event=>{
+    if(!event.matches)return;
+    observer.disconnect();
+    document.querySelectorAll('.will-reveal').forEach(el=>el.classList.add('is-visible'));
+    document.getAnimations().forEach(animation=>animation.cancel());
+  });
 }
 const entries=[...document.querySelectorAll<HTMLDetailsElement>('.work-entry')];
 entries.forEach(entry=>entry.addEventListener('toggle',()=>{
