@@ -2,23 +2,22 @@
 import '../styles/global.css';
 import '../styles/reference.css';
 import '../styles/motion.css';
-import Icon from '../components/Icon.astro';
 const { title = 'Molinda Mihiranga', description = 'Thoughtful interfaces. Robust systems. Selected software engineering work by Molinda Mihiranga, based in Sri Lanka.' } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const themes = [
-  { id: 'crimson', name: 'Crimson', detail: 'The original. Black & red.' },
-  { id: 'violet', name: 'Violet', detail: 'Rich purple. Deep black.' },
-  { id: 'paper', name: 'Paper', detail: 'Warm ivory. Quiet contrast.' },
-  { id: 'midnight', name: 'Midnight', detail: 'Deep navy. Ice blue.' },
+const menu = [
+  { id: 'experience', name: 'Experience' },
+  { id: 'work', name: 'Projects' },
+  { id: 'about', name: 'About' },
+  { id: 'contact', name: 'Contact' },
 ];
 ---
 <!doctype html>
-<html lang="en" data-theme="crimson">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#090909" />
+    <meta name="theme-color" content="#0e0d0d" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -26,33 +25,18 @@ const themes = [
     <link rel="stylesheet" href={`${base}fonts/display.css`} />
     <link rel="stylesheet" href={`${base}fonts/sans.css`} />
     <link rel="stylesheet" href={`${base}fonts/mono.css`} />
-    <link rel="stylesheet" href={`${base}fonts/script.css`} />
-    <script is:inline>
-      (() => {
-        let theme = 'crimson';
-        try { const saved = localStorage.getItem('portfolio-appearance-v2'); if (['crimson', 'violet', 'paper', 'midnight'].includes(saved)) theme = saved; } catch {}
-        document.documentElement.dataset.theme = theme;
-      })();
-    </script>
-    <title>Molinda Mihiranga</title>
+    <title>{title}</title>
   </head>
   <body id="top">
     <div class="page-progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href={base} aria-label="Molinda Mihiranga, home"><span class="brand-mark">M<span>↗</span></span><span class="brand-caption">MOLINDA MIHIRANGA<br /><span>SOFTWARE ENGINEER</span></span></a>
-      <nav class="main-nav" aria-label="Main navigation"><a href={`${base}#work`} data-section="work"><small>01</small> WORK</a><a href={`${base}#about`} data-section="about"><small>02</small> ABOUT</a><a href={`${base}#contact`} data-section="contact"><small>03</small> CONTACT</a></nav>
-      <div class="appearance">
-        <button class="appearance-toggle" type="button" aria-label="Choose appearance. Current palette: Crimson" aria-expanded="false" aria-controls="appearance-panel"><span class="appearance-swatch"></span><span class="appearance-name">Crimson</span><Icon name="chevron" size={15} /></button>
-        <div class="appearance-panel" id="appearance-panel" hidden>
-          <div class="appearance-heading"><span>MAKE IT YOURS</span><small>{String(themes.length).padStart(2, '0')} PALETTES</small></div>
-          <div class="palette-list" role="group" aria-label="Choose a color palette">{themes.map(theme => <button type="button" class={`palette-option palette-${theme.id}`} data-color={theme.id} aria-pressed={theme.id === 'crimson'}><span class="palette-preview" aria-hidden="true"><i></i><b>Aa</b></span><span><strong>{theme.name}</strong><small>{theme.detail}</small></span><Icon name="check" size={16} class="palette-check" /></button>)}</div>
-          <p>Saved for your next visit.</p>
-        </div>
-      </div>
+      <a class="brand" href={base} aria-label="Molinda Mihiranga, home">Molinda Mihiranga <span>— Software engineer</span></a>
+      <nav class="main-nav" aria-label="Main navigation">{menu.map(item => <a href={`${base}#${item.id}`} data-section={item.id}>{item.name}</a>)}</nav>
+      <a class="header-cta" href={`${base}#contact`}>Get in touch</a>
     </header>
     <main id="main"><slot /></main>
-    <footer class="site-footer"><a href={base} class="footer-name">MOLINDA MIHIRANGA<span>✦</span></a><span>DESIGNED WITH INTENT. BUILT WITH CARE.</span><a href="#top">BACK TO TOP <Icon name="arrow" size={15} /></a><small>© {new Date().getFullYear()}</small></footer>
+    <footer class="site-footer"><span>© {new Date().getFullYear()} Molinda Mihiranga</span><span>Designed and built by hand.</span><a href="#top">Back to top ↑</a></footer>
     <script src="../scripts/interactions.ts"></script>
   </body>
 </html>

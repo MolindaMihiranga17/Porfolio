@@ -9,7 +9,8 @@ export type Project = {
   github?: string;
   live?: string;
   accent: string;
-  visual: 'vettly' | 'hydro' | 'spendwise' | 'gymora' | 'lms';
+  visual: 'nimbus' | 'vettly' | 'hydro' | 'spendwise';
+  status?: string;
   highlights: string[];
   screenshots?: {
     src: string;
@@ -21,7 +22,28 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'vettly', number: '01', title: 'Vettly', eyebrow: 'AI-powered recruitment',
+    slug: 'nimbus', number: '01', title: 'Nimbus', eyebrow: 'AI-powered project management',
+    summary: 'A project management platform for projects, issues, boards and sprints, with AI that turns meeting notes into issues and catches duplicates before they are filed.',
+    category: 'Web, desktop + mobile', status: 'Ongoing',
+    tags: ["Java 21", "Spring Boot", "Spring Modulith", "PostgreSQL", "pgvector", "React", "TypeScript", "Electron", "React Native", "Expo", "Turborepo"],
+    accent: '#9fc5ff', visual: 'nimbus',
+    highlights: [
+      "Building a full-stack project management platform (projects, issues, boards, sprints) as a team of three, on a Spring Modulith modular monolith where modules communicate only through public APIs and domain events.",
+      "Implementing AI features that turn meeting notes into issues and detect duplicate issues before they are filed, using vector similarity search with PostgreSQL pgvector.",
+      "Developing server-enforced, per-project roles that admins can change at runtime, OAuth2 sign-in with linked identity providers, mandatory two-step verification, and assignment notifications.",
+      "Developing the React web app (Mantine, TanStack Query, dnd-kit drag-and-drop), an Electron desktop app, and an Expo mobile app in a Turborepo monorepo sharing API types, design tokens, and UI components.",
+      "Managing the schema with versioned Flyway migrations, writing integration tests with Testcontainers, and running GitHub Actions CI with Cloudflare R2 file storage and a spec-driven, pull-request-based workflow.",
+    ],
+    screenshots: [
+      { src: 'projects/nimbus/board.webp', alt: 'Nimbus issues board with To do, In progress, In review and Done columns', caption: 'Issues board, columns are the project’s statuses', kind: 'desktop' },
+      { src: 'projects/nimbus/issue-page.webp', alt: 'Nimbus issue page with description, acceptance criteria and history', caption: 'Issue page with history and side panel', kind: 'desktop' },
+      { src: 'projects/nimbus/home.webp', alt: 'Nimbus home page with assigned issues and project list', caption: 'Home: my work and projects', kind: 'desktop' },
+      { src: 'projects/nimbus/notifications.webp', alt: 'Nimbus notifications panel open over the issues list', caption: 'Notifications panel', kind: 'desktop' },
+      { src: 'projects/nimbus/projects.webp', alt: 'Nimbus projects list', caption: 'Projects list', kind: 'desktop' },
+    ],
+  },
+  {
+    slug: 'vettly', number: '02', title: 'Vettly', eyebrow: 'AI-powered recruitment',
     summary: 'A recruitment platform that brings candidate ranking, screening, messaging, and offer management into one workflow.',
     category: 'Web platform',
     tags: ["React", "TypeScript", "ASP.NET Core", "Go", "FastAPI", "PostgreSQL", "Redis", "SignalR", "Cloudflare R2", "Docker", "GitHub Actions"],
@@ -43,7 +65,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'hydroguardian', number: '02', title: 'HydroGuardian', eyebrow: 'Connected agriculture',
+    slug: 'hydroguardian', number: '03', title: 'HydroGuardian', eyebrow: 'Connected agriculture',
     summary: 'A smart hydroponic system combining live sensor monitoring, device control, and AI-assisted crop insights.',
     category: 'Mobile + IoT',
     tags: ["React Native", "Expo", "FastAPI", "TensorFlow", "CNN + LSTM", "ESP32", "WebSockets", "PyJWT"],
@@ -63,7 +85,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'spendwise', number: '03', title: 'SpendWise', eyebrow: 'Personal finance, made clearer',
+    slug: 'spendwise', number: '04', title: 'SpendWise', eyebrow: 'Personal finance, made clearer',
     summary: 'An offline-first finance and vehicle expense tracker with spending insights, reminders, and connected services.',
     category: 'Mobile + systems',
     tags: ["React Native", "Expo", "Go", "Spring Boot", "FastAPI", "Apache Kafka", "PostgreSQL", "Redis", "Kong", "AWS", "SQLite"],
@@ -79,44 +101,6 @@ export const projects: Project[] = [
       { src: 'projects/spendwise/dashboard.png', alt: 'SpendWise personal finance dashboard showing budget and expenses', caption: 'Personal finance overview', kind: 'phone' },
       { src: 'projects/spendwise/vehicle.png', alt: 'SpendWise vehicle expense overview for a Toyota Aqua', caption: 'Vehicle cost and efficiency overview', kind: 'phone' },
       { src: 'projects/spendwise/vehicle-detail.jpg', alt: 'SpendWise vehicle detail screen', caption: 'Vehicle detail view', kind: 'phone' },
-    ],
-  },
-  {
-    slug: 'gymora', number: '04', title: 'Gymora', eyebrow: 'Gym operations at scale',
-    summary: 'A multi-tenant gym management platform spanning memberships, coaching, payments, inventory, and reporting.',
-    category: 'SaaS platform',
-    tags: ["React", "Vite", "Node.js", "Express.js", "MongoDB", "Mongoose", "Socket.IO", "JWT", "PayHere", "Google Gemini API", "Zod"],
-    accent: '#b5b8ff', visual: 'gymora',
-    highlights: [
-      "Designed and built a full-stack, multi-tenant SaaS platform during my Raxwo internship, with dedicated dashboards, permissions, and JWT access control for Super Admin, Gym Owner, Coach, and Member roles.",
-      "Developed member and coach lifecycle management, subscriptions, workout and meal plan assignments, attendance, and automatic account updates when memberships expire.",
-      "Implemented POS and inventory workflows for member and walk-in sales, stock updates, returns, printable bills, email receipts, and low-stock monitoring.",
-      "Integrated PayHere subscription payments, SMSLenz and Nodemailer notifications, and Google Gemini API features.",
-      "Built notifications and audit logs for expiring memberships, payment issues, low stock, trials, and owner/coach activity, with real-time updates through Socket.IO.",
-      "Created client-side PDF and Excel reports for finance, attendance, members, and inventory using jsPDF, jspdf-autotable, and XLSX."
-],
-    screenshots: [
-      { src: 'projects/gymora/owner-dashboard.webp', alt: 'Gymora gym owner dashboard with revenue, operations, and member status panels', caption: 'Gym owner dashboard', kind: 'desktop' },
-      { src: 'projects/gymora/super-admin-dashboard.webp', alt: 'Gymora super admin dashboard showing platform health, revenue trends, and plan mix', caption: 'Platform administration dashboard', kind: 'desktop' },
-    ],
-  },
-  {
-    slug: 'raxwolms', number: '05', title: 'RaxwoLMS', eyebrow: 'Learning, organized',
-    summary: 'A multi-tenant learning and institute management system for academics, administration, and finance.',
-    category: 'SaaS platform',
-    tags: ["Next.js", "React", "TypeScript", "MongoDB", "Mongoose", "Tailwind CSS", "AWS S3", "JWT", "Zod", "ExcelJS", "Recharts"],
-    accent: '#f3d58b', visual: 'lms',
-    highlights: [
-      "Architected a multi-tenant platform during my Raxwo internship, serving multiple tuition institutes from one codebase with strict server-side tenant isolation and role-based access for platform admins, institute admins, staff/teachers, and students.",
-      "Developed courses, modules, lessons, quizzes, assignments, grading, examinations, attendance, class scheduling, and student progress tracking.",
-      "Built fee management, concessions, payments, expenses, and bank ledgers for institutes, alongside platform subscriptions, invoicing, finance, and bank reconciliation.",
-      "Integrated AWS S3 presigned URLs for secure file storage, PDF and Excel reporting, audit logs, announcements, privacy request handling, and administrative tools.",
-      "Used Server Actions with dedicated data-access and mutation layers, custom JWT authentication, Zod validation, and reusable UI components for maintainable, type-safe development."
-],
-    screenshots: [
-      { src: 'projects/raxwolms/landing-page.webp', alt: 'LearningMS landing page introducing the institute workspace', caption: 'Institute workspace landing page', kind: 'desktop' },
-      { src: 'projects/raxwolms/institute-admin-dashboard.webp', alt: 'RaxwoLMS institute admin dashboard with academic, finance, and activity summaries', caption: 'Institute admin dashboard', kind: 'desktop' },
-      { src: 'projects/raxwolms/student-dashboard.webp', alt: 'RaxwoLMS student dashboard with courses, classes, exams, and deadlines', caption: 'Student dashboard', kind: 'desktop' },
     ],
   },
 ];

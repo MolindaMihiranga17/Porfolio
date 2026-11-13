@@ -1,68 +1,115 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
+import TechChip from '../components/TechChip.astro';
 import { projects } from '../data/projects';
 const base = import.meta.env.BASE_URL;
-const steps = [
-  { name: 'Understand', icon: 'search', text: 'Start with the problem. Ask better questions.' },
-  { name: 'Shape', icon: 'pen', text: 'Make the complex feel clear and intuitive.' },
-  { name: 'Build', icon: 'code', text: 'Connect thoughtful interfaces to solid systems.' },
-  { name: 'Refine', icon: 'launch', text: 'Test the details. Keep making it better.' },
+
+const internship = [
+  { title: 'Multi-tenant SaaS web applications', text: 'Designed and built full-stack, multi-tenant SaaS applications with strict tenant isolation, JWT-based authentication, and role-based access control across multiple user roles, each with its own dashboard.' },
+  { title: 'Core business modules, end to end', text: 'Developed member and user management, subscriptions, scheduling, attendance tracking, billing, payments, and financial record keeping.' },
+  { title: 'Third-party integrations', text: 'Integrated payment gateways, SMS and email notifications, secure cloud file storage with AWS S3 presigned URLs, and AI-powered features through external APIs.' },
+  { title: 'Real-time features and audit logging', text: 'Built live updates with Socket.IO, automated notifications, and audit logging systems that track key user and system activity.' },
+  { title: 'Reporting and dashboards', text: 'Implemented PDF and Excel reporting along with data visualisation dashboards for financial, attendance, and inventory data.' },
+  { title: 'Maintainable, type-safe architecture', text: 'Applied Server Actions, dedicated data-access layers, Zod validation, and reusable UI components to keep the codebase clean and safe to extend.' },
 ];
+const stack = ['React', 'Next.js', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'Socket.IO', 'JWT', 'Zod', 'Tailwind CSS', 'AWS S3'];
+const skillGroups = [
+  { name: 'Languages', items: ['Java', 'C', 'C++', 'JavaScript', 'TypeScript', 'Go', 'Python', 'PHP', 'Kotlin', 'SQL'] },
+  { name: 'Web & mobile', items: ['React', 'React Native', 'Next.js', 'Express.js', 'Node.js', 'ASP.NET Core', 'Spring Boot', 'FastAPI'] },
+  { name: 'Database & messaging', items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Apache Kafka'] },
+  { name: 'Cloud & infra', items: ['Docker', 'Kong', 'Cloudflare R2', 'AWS', 'GitHub Actions'] },
+  { name: 'Tools', items: ['Git', 'R Studio', 'Power BI', 'Trello', 'Jira', 'Playwright'] },
+];
+const email = 'molindamihiranga17@gmail.com';
 ---
 <BaseLayout>
-  <section class="hero" id="intro" aria-labelledby="hero-title">
-    <div class="hero-topline"><span>INDEPENDENT THINKING. CONNECTED SYSTEMS.</span><span class="status-label"><i></i> OPEN TO OPPORTUNITIES</span></div>
-    <div class="hero-masthead" aria-hidden="true">PORTFOLIO</div>
-    <div class="portrait-stage"><img class="hero-cutout" src={`${base}images/molinda-cutout.png`} alt="Molinda Mihiranga" width="1122" height="1402" fetchpriority="high" decoding="async" /></div>
-    <div class="hero-intro">
-      <span class="hero-greeting">Hello, I’m</span>
-      <h1 id="hero-title">MOLINDA<br />MIHIRANGA<span>.</span></h1>
-      <p class="hero-role">SOFTWARE ENGINEER<br />&amp; CURIOUS BUILDER.</p>
-      <p class="hero-description">Thoughtful on the surface.<br />Solid underneath. I build software<br class="desktop-break" /> that brings the two together.</p>
-      <a class="hero-work-link" href="#work"><span>EXPLORE MY WORK</span><span class="circle-arrow"><Icon name="down" size={19} /></span></a>
+  <section class="hero section-shell" id="intro" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><i></i> Open to opportunities</p>
+          <h1 id="hero-title">Molinda<br />Mihiranga<br /><span>Software engineer.</span></h1>
+          <p class="hero-lead"><strong>Thoughtful interfaces on solid systems.</strong> I’m an IT undergraduate at SLIIT based in Sri Lanka, building full-stack products from the first idea to something that works.</p>
+          <div class="hero-actions"><a class="btn btn-solid" href="#work">View projects</a><a class="btn" href={`${base}resume/Molinda-Mihiranga-CV.pdf`} download>Download CV <Icon name="download" size={15} /></a></div>
+        </div>
+        <figure class="hero-portrait"><img src={`${base}images/molinda-portrait.webp`} alt="Portrait of Molinda Mihiranga" width="640" height="667" fetchpriority="high" decoding="async" /><figcaption>Colombo, Sri Lanka</figcaption></figure>
+      </div>
+      <dl class="facts">
+        <div><dt>6 months</dt><dd>Software engineering internship at Raxwo</dd></div>
+        <div><dt>{projects.length} projects</dt><dd>Built end to end, from architecture to deployment</dd></div>
+        <div><dt>BSc IT</dt><dd>Sri Lanka Institute of Information Technology</dd></div>
+      </dl>
     </div>
-    <div class="hero-side">
-      <div class="hero-note"><span class="orbit-star"><Icon name="spark" size={27} /></span><p>From a first idea<br />to something<br /><em>that works.</em></p></div>
-      <dl class="hero-stats"><div><dt>05</dt><dd>SELECTED<br />PROJECTS</dd></div><div><dt>06</dt><dd>MONTHS AT<br />RAXWO</dd></div><div><dt>IT</dt><dd>UNDERGRADUATE<br />AT SLIIT</dd></div></dl>
-    </div>
-    <div class="hero-bottomline"><span><Icon name="globe" size={14} /> BASED IN SRI LANKA · BUILDING BEYOND BORDERS</span><span>SCROLL TO DISCOVER <Icon name="down" size={13} /></span></div>
   </section>
 
-  <div class="discipline-strip" aria-label="Areas of work"><span>FULL-STACK DEVELOPMENT</span><Icon name="spark" size={16} /><span>MOBILE EXPERIENCES</span><Icon name="spark" size={16} /><span>AI &amp; CONNECTED SYSTEMS</span><Icon name="spark" size={16} /><span>IDEAS INTO REALITY</span></div>
+  <section class="section section-shell" id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Experience</p><div><h2 id="experience-title">What I did as an intern.</h2><p>Six months of production work on multi-tenant business software, across the database, the API and the interface.</p></div></div>
+      <div class="exp">
+        <div class="exp-meta reveal">
+          <span class="dates">Apr — Oct 2026</span>
+          <h3>Software Engineering Intern</h3>
+          <span class="company">Raxwo Pvt Ltd</span>
+          <span class="place">Remote · Sri Lanka</span>
+          <div class="chips">{stack.map(s => <TechChip name={s} />)}</div>
+        </div>
+        <div class="exp-list">{internship.map((item, index) => <div class="exp-item reveal"><span>{String(index + 1).padStart(2, '0')}</span><div><h4>{item.title}</h4><p>{item.text}</p></div></div>)}</div>
+      </div>
+    </div>
+  </section>
 
-  <section class="selected-work section-shell" id="work" aria-labelledby="work-title">
-    <div class="section-heading reveal"><div><p class="eyebrow"><span>01 /</span> THE WORK</p><h2 id="work-title">SELECTED <em>WORK.</em></h2></div><p>Different problems. One approach.<br />Build something useful, and build it well.</p><span class="section-count">( 01—05 )</span></div>
-    <div class="showcase-grid">{projects.map((project, index) => {
-      const phone = project.visual === 'hydro' || project.visual === 'spendwise';
-      const shots = (project.screenshots ?? []).slice(0, phone ? 2 : 1);
-      return <article class:list={['showcase-card', 'reveal', { 'showcase-featured': index === 0, 'showcase-secondary': index === 1 }]}>
-        <a href={`${base}projects/${project.slug}/`} class="showcase-link" aria-label={`Explore ${project.title}: ${project.eyebrow}`}>
-          <div class={`showcase-visual showcase-${project.visual}`}>
-            <div class="showcase-top"><span>{project.eyebrow}</span><span class="visual-link-icon"><Icon name="arrow" size={19} /></span></div>
-            <span class="showcase-word" aria-hidden="true">{project.title}</span>
-            <div class:list={['project-art', { 'phone-art': phone, 'desktop-art': !phone }]}>{shots.map(shot => <div class={phone ? 'phone-frame' : 'browser-frame'}>{!phone && <div class="browser-chrome" aria-hidden="true"><i></i><i></i><i></i><span>{project.title.toLowerCase()} / workspace</span></div>}<img src={`${base}${shot.src}`} alt={shot.alt} loading="lazy" decoding="async" /></div>)}</div>
-            <span class="visual-footnote">{phone ? 'MOBILE EXPERIENCE' : 'WEB PLATFORM'} <span>↗</span></span>
+  <section class="section section-shell" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="section-head reveal"><p class="eyebrow">Projects</p><div><h2 id="work-title">Selected work.</h2><p>Different problems, one approach: build something useful, and build it well.</p></div></div>
+      <div class="projects">{projects.map(project => {
+        const phone = project.visual === 'hydro' || project.visual === 'spendwise';
+        const shots = (project.screenshots ?? []).slice(0, phone ? 2 : 1);
+        const href = `${base}projects/${project.slug}/`;
+        return <article class="project reveal">
+          <a class:list={['project-media', { 'is-phone': phone, 'is-placeholder': shots.length === 0 }]} href={href} aria-label={`Open ${project.title}`}>{shots.length > 0
+            ? <div class="frame">{shots.map(shot => <img src={`${base}${shot.src}`} alt={shot.alt} loading="lazy" decoding="async" />)}</div>
+            : <div class="placeholder"><span>{project.eyebrow}</span><strong>{project.title}</strong><div class="type-lines"><i></i><i></i><i></i><i></i></div><span>{project.status ?? 'In progress'} · screenshots coming soon</span></div>}</a>
+          <div class="project-copy">
+            <p class="eyebrow"><span>{project.number}</span><span>{project.category}</span>{project.status && <span class="status-pill">{project.status}</span>}</p>
+            <h3><a href={href}>{project.title}</a></h3>
+            <p>{project.summary}</p>
+            <div class="chips">{project.tags.slice(0, 5).map(tag => <TechChip name={tag} />)}</div>
+            <a class="link" href={href}>Read the case study <Icon name="right" size={15} /></a>
           </div>
-          <div class="showcase-caption"><span class="project-number">{project.number}</span><div><h3>{project.title}</h3><p>{project.category}</p></div><Icon name="right" size={26} /></div>
-        </a>
-      </article>;
-    })}</div>
-    <div class="work-endnote"><span>REAL PROJECTS. REAL SCREENS. END-TO-END THINKING.</span><a href="https://github.com/MolindaMihiranga17" target="_blank" rel="noopener noreferrer">MORE ON GITHUB <Icon name="arrow" size={15} /></a></div>
-  </section>
-
-  <section class="about section-shell" id="about" aria-labelledby="about-title">
-    <div class="about-intro reveal"><div><p class="eyebrow"><span>02 /</span> BEHIND THE WORK</p><h2 id="about-title">A CURIOUS MIND.<br /><em>A PRACTICAL BUILDER.</em></h2></div><div class="about-copy"><p>I’m Molinda, a software engineer and IT undergraduate at SLIIT. I enjoy the space where a good idea meets the details that make it work.</p><p>From multi-tenant platforms at Raxwo to AI recruitment and connected agriculture, I work across the interface, the API, and everything underneath.</p><a class="inline-link" href={`${base}resume/Molinda-Mihiranga-CV.pdf`} download>DOWNLOAD MY CV <Icon name="download" size={17} /></a></div></div>
-    <div class="about-grid">
-      <div class="credentials reveal"><h3>THE FOUNDATION<span>01</span></h3><div class="credential"><p class="eyebrow">EXPERIENCE <span>APR — OCT 2026</span></p><h4>Software Engineering Intern</h4><p>Raxwo Pvt Ltd · Remote, Sri Lanka</p><div class="experience-links"><a href={`${base}projects/gymora/`}>Gymora <Icon name="arrow" size={12} /></a><a href={`${base}projects/raxwolms/`}>RaxwoLMS <Icon name="arrow" size={12} /></a></div></div><div class="credential"><p class="eyebrow">EDUCATION <span>2022 — PRESENT</span></p><h4>BSc in Information Technology</h4><p>Sri Lanka Institute of Information Technology</p></div><div class="skills-block"><p class="eyebrow">TOOLS OF THE TRADE</p><div class="skill-tags">{['React', 'Next.js', 'TypeScript', 'React Native', 'Go', 'Python', 'ASP.NET Core', 'PostgreSQL', 'Docker', 'AWS'].map(skill => <span>{skill}</span>)}</div></div></div>
-      <div class="process reveal"><h3>THE PROCESS<span>02</span></h3><ol>{steps.map((step, index) => <li><span class="process-number">0{index + 1}</span><span class="process-icon"><Icon name={step.icon} size={21} /></span><div><h4>{step.name}</h4><p>{step.text}</p></div></li>)}</ol></div>
-      <aside class="manifesto reveal"><Icon name="spark" size={57} /><p>FROM<br /><span>“WHAT IF”</span><br />TO<br /><span>“IT WORKS.”</span></p><div><span class="signature">Molinda</span><span class="manifesto-note">THAT’S THE PART<br />I LOVE.</span></div></aside>
+        </article>;
+      })}</div>
+      <div class="work-endnote"><span>More experiments and source code on GitHub.</span><a class="link" href="https://github.com/MolindaMihiranga17" target="_blank" rel="noopener noreferrer">github.com/MolindaMihiranga17 <Icon name="arrow" size={14} /></a></div>
     </div>
   </section>
 
-  <section class="contact section-shell" id="contact" aria-labelledby="contact-title">
-    <div class="contact-topline"><p class="eyebrow"><span>03 /</span> THE NEXT CHAPTER</p><span class="status-label"><i></i> OPEN TO A CONVERSATION</span></div>
-    <div class="contact-main"><div class="contact-title-wrap reveal"><h2 id="contact-title">LET’S MAKE<br /><em>IT HAPPEN.</em></h2><Icon name="spark" size={64} class="contact-star" /></div><div class="contact-info reveal"><p>A project, an opportunity, or a good idea.<br />It all starts with a conversation.</p><a class="email-link" href="mailto:molindamihiranga17@gmail.com"><span>molindamihiranga17<br />@gmail.com</span><Icon name="arrow" size={31} /></a><div class="contact-actions"><button class="copy-email" type="button" data-email="molindamihiranga17@gmail.com"><Icon name="copy" size={15} /><span>COPY EMAIL</span></button><span class="copy-status" role="status" aria-live="polite"></span></div><div class="social-links"><a href="https://github.com/MolindaMihiranga17" target="_blank" rel="noopener noreferrer">GITHUB <Icon name="arrow" size={14} /></a><a href="https://www.linkedin.com/in/molinda-mihiranga-627789317" target="_blank" rel="noopener noreferrer">LINKEDIN <Icon name="arrow" size={14} /></a><a href={`${base}resume/Molinda-Mihiranga-CV.pdf`} download>RESUMÉ <Icon name="download" size={14} /></a></div></div></div>
-    <div class="contact-bottomline"><span>BASED IN SRI LANKA. ALWAYS CURIOUS.</span><span>GOOD THINGS START SOMEWHERE. <Icon name="right" size={19} /></span></div>
+  <section class="section section-shell" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="about">
+        <p class="eyebrow reveal">About</p>
+        <div class="reveal">
+          <div class="about-copy">
+            <h2 id="about-title" style="font:500 clamp(30px,3.4vw,44px)/1.15 'DM Sans';letter-spacing:-.02em;color:var(--ink)">A curious mind and a practical builder.</h2>
+            <p>I enjoy the space where a good idea meets the details that make it work. I’m most at home working across the whole stack: the interface people touch, the API behind it, and the data and infrastructure underneath.</p>
+            <p>Outside of coursework I build real products, from <strong>AI-assisted recruitment</strong> to <strong>connected agriculture</strong> and <strong>personal finance</strong>, and I care about shipping things that are both pleasant to use and solid under the hood.</p>
+          </div>
+          <div class="about-cols">
+            <div class="edu"><h4>Education</h4><strong>BSc in Information Technology</strong><span>Sri Lanka Institute of Information Technology, Malabe · 2022 — present</span><strong style="margin-top:18px">Science stream (Mathematics)</strong><span>Badulla Central College · 2013 — 2021</span></div>
+            <div>{skillGroups.map(group => <div class="skill-group"><h4>{group.name}</h4><div class="chips">{group.items.map(item => <TechChip name={item} />)}</div></div>)}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact section-shell" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2 id="contact-title">Let’s talk.</h2>
+      <p>A project, an opportunity or a good idea. It all starts with a conversation.</p>
+      <a class="email-link" href={`mailto:${email}`}>{email} <Icon name="arrow" size={22} /></a>
+      <div class="contact-actions"><button class="copy-email" type="button" data-email={email}><Icon name="copy" size={14} /> Copy email</button><span class="copy-status" role="status" aria-live="polite"></span></div>
+      <div class="social-links"><a href="https://github.com/MolindaMihiranga17" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/molinda-mihiranga-627789317" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href={`${base}resume/Molinda-Mihiranga-CV.pdf`} download>Résumé</a></div>
+    </div>
   </section>
 </BaseLayout>
